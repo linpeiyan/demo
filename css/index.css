@@ -17,15 +17,16 @@ transform:translateZ(0);
     width:100px;
     height:215px;
     position:absolute;
-    bottom:0;
-    left:10%;
+    bottom:230px;
+    left:330px;
 }
 .windmill .head{
     position:relative;
-    width:100px;
-    height:100px;
+    width:80px;
+    height:80px;
     background:url(../images/fengche.png) no-repeat;
-    animation:show 1s linear 0s infinite;
+    background-size: 80px 80px;
+    animation:show .5s linear 0s infinite;
 }
 @-webkit-keyframes show{
     0%   {transform: rotateZ(0deg)}
@@ -40,10 +41,10 @@ transform:translateZ(0);
     100% {transform: rotateZ(360deg)}
 }
 .windmill .footer{
-    width:10px;
-    height:160px;
+    width:5px;
+    height:120px;
     border-radius:5px;
     background:#fff;
-    margin-left:45px;
-    margin-top:-45px;
+    margin-left:35px;
+    margin-top:-35px;
 }
