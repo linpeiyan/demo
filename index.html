@@ -1,9 +1,195 @@
-<HTML>
-  <BODY>
-    <B>hello world!</B>
-    <p style="color:red;">欢迎光临！</p>
-    <p style="color:yellow">欢迎光临~！</p>
-    <p><b>这是从线上增加的内容</b></p>
-    <img src="images/fengche.png" alt="">
-  </BODY>
-</HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        ul,li{list-style:none;}
+        .bike{
+            width:500px;
+            margin:0 auto;
+            position:relative;
+            height:400px;
+            background:#C23433;
+        } 
+        .tyreBox{
+            width:500px;
+            height:150px;
+            position:absolute;
+            bottom:0;
+        }
+        .tyre{
+            width:134px;
+            height:134px;
+            border-radius:50%;
+            border:8px solid #fff;
+            position:absolute;
+            animation:show 2s linear 0s infinite;
+        }
+        .tyreRight{right:30px;}
+        .styre{width:30px;height:30px;border-radius:50%;border:3px solid #fff;position:absolute;top:50%;left:50%;margin-left:-18px;margin-top:-18px;}
+        .tyre li{
+            width:2px;
+            height:134px;
+            background:#fff;
+            position:absolute;
+            left:50%;
+            margin-left:-1px;
+        }
+        .tyre li:nth-child(2){ transform:rotate(20deg); }
+        .tyre li:nth-child(3){ transform:rotate(40deg); }
+        .tyre li:nth-child(4){ transform:rotate(60deg); }
+        .tyre li:nth-child(5){ transform:rotate(80deg); }
+        .tyre li:nth-child(6){ transform:rotate(100deg); }
+        .tyre li:nth-child(7){ transform:rotate(120deg); }
+        .tyre li:nth-child(8){ transform:rotate(140deg); }
+        .tyre li:nth-child(9){ transform:rotate(160deg); }
+        /*架子*/
+        .shelfBig{
+            width:180px;
+            height:120px;
+            border:8px solid #fff;
+            transform:skewX(-40deg);
+            position:absolute;
+            top:194px;
+            left:115px;
+        }
+        .gear{
+            position:absolute;
+            width:60px;
+            height:60px;
+            border-radius:50%;
+            border:3px solid #fff;
+            top:290px;
+            left:200px;
+            background:#C23433;
+        }
+        .gear .chain{
+            width:160px;
+            height:1px;
+            background:#fff;
+            position:absolute;
+            left:-130px;
+            top:6px;
+            transform:rotate(-6deg);
+        }
+        .gear .chainBottom{
+            top:55px;
+            transform:rotate(5deg);
+        }
+        .gear .pedalBox{
+            width:100px;
+            position:absolute;
+            top:50%;
+            left:-50%;
+            margin-left:10px;
+            z-index: 2;
+            animation:show 2s linear 0s infinite;
+        }
+        .gear .pedalHolder{width:100px;height:3px;background:#fff;}
+        .gear .pedal{width:20px;height:4px;background:#fff;position:absolute;right:-10px;top:-1px;transform:rotate(-20deg);}
+        .gear .pedalAfter{left:-10px;}
+        .pipeAfter{
+            position:absolute;
+            width:8px;
+            height:165px;
+            background:#fff;
+            top:168px;
+            left:195px;
+            border-radius:4px;
+            transform:rotate(-25deg);
+        }
+        .pipeBefore{
+            position:absolute;
+            width:8px;
+            height:194px;
+            background:#fff;
+            top:140px;
+            left:360px;
+            border-radius:4px;
+            transform:rotate(-20deg);
+        }
+        .seat{
+            position:absolute;
+            width:70px;
+            height:10px;
+            border-radius:10px;
+            background:#fff;
+            top:170px;
+            left:125px;
+        }
+        .handlebar{
+             position:absolute;
+            width:100px;
+            height:10px;
+            border-radius:10px;
+            background:#fff;
+            top:145px;
+            left:280px;   
+        }
+    </style>
+</head>
+<body>
+   <!-- <div class="wrap">
+         <div class="windmill">
+           <div class="head"></div>
+           <div class="footer"></div>
+       </div>
+    </div> -->
+       <div class="bike">
+            <div class="shelf">
+                <div class="shelfBig"></div>
+                <div class="seat"></div>
+                <div class="handlebar"></div>
+                <div class="gear">
+                    <div class="chainTop chain"></div>
+                    <div class="chainBottom chain"></div>
+                    <div class="pedalBox">
+                        <div class="pedalHolder"></div>
+                        <div class="pedal"></div>
+                        <div class="pedal pedalAfter"></div>
+                    </div>
+                </div>
+                <div class="pipeAfter"></div>
+                <div class="pipeBefore"></div>
+            </div>
+            <div class="tyreBox">
+                <div class="tyreLeft tyre">
+                    <div class="styre"></div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="tyreRight tyre">
+                    <div class="styre"></div>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+       </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+*{
+    padding:0;
+    margin:0;
+}
+body{
+    background:#EFD72F;
+    background:#C23433;
+}
+.wrap{}
+.windmill{
+    width:100px;
+    height:215px;
+    position:absolute;
+    bottom:0;
+    left:10%;
+}
+.windmill .head{
+    position:relative;
+    width:100px;
+    height:100px;
+    background:url(../images/fengche.png) no-repeat;
+    animation:show 1s linear 0s infinite;
+}
+@keyframes show{
+    0%   {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(360deg)}
+}
+.windmill .footer{
+    width:10px;
+    height:160px;
+    border-radius:5px;
+    background:#fff;
+    margin-left:45px;
+    margin-top:-45px;
+}
