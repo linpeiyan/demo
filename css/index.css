@@ -6,6 +6,12 @@ body{
     background:#EFD72F;
     background:#C23433;
 }
+/*CSS3 开启GPU硬件加速*/
+-webkit-transform:translateZ(0);
+-moz-transform:translateZ(0);
+-ms-transform:translateZ(0);
+-o-transform:translateZ(0);
+transform:translateZ(0);
 .wrap{}
 .windmill{
     width:100px;
@@ -20,6 +26,14 @@ body{
     height:100px;
     background:url(../images/fengche.png) no-repeat;
     animation:show 1s linear 0s infinite;
+}
+@-webkit-keyframes show{
+    0%   {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(360deg)}
+}
+@-moz-keyframes show{
+    0%   {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(360deg)}
 }
 @keyframes show{
     0%   {transform: rotateZ(0deg)}
