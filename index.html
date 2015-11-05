@@ -28,7 +28,7 @@
     /*架子*/
     .shelf { width: 100%; height: 270px; position:relative; }
     .shelfBig { width: 180px; height: 120px; border: 8px solid #fff; transform: skewX(-40deg); top: 60px; left: 125px; }
-    .gear { width: 60px; height: 60px; border-radius: 50%; border: 3px solid #fff; top: 160px; left: 200px; background: #EFD72F; background: #C23433; }
+    .gear { width: 60px; height: 60px; border-radius: 50%; border: 3px solid #fff; top: 160px; left: 200px; background: #C23433;background: #EFD72F; }
     .gear .chain { width: 160px; height: 1px; left: -130px; top: 6px; transform: rotate(-6deg); }
     .gear .chainBottom { top: 55px; transform: rotate(5deg); }
     .gear .pedalBox { width: 100px; top: 50%; left: -50%; margin-left: 10px; z-index: 2; -webkit-animation: show .8s linear 0s infinite; -moz-animation: show .8s linear 0s infinite; animation: show .8s linear 0s infinite; }
@@ -68,7 +68,7 @@
 
 <body>
     <div class="wrap">
-        <div class="windmill" hidden>
+        <div class="windmill">
             <div class="head"></div>
             <div class="footer"></div>
         </div>
@@ -147,10 +147,10 @@
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
         $(function(){
-            var winWidth=$(window).width();
+            var winWidth=$(window).width(),
+                left=0;
             $('.roadBoxCon ul').css('width',winWidth);
             $('.roadBoxCon').css('width',$('.roadBox ul').length*winWidth);
-            var left=0;
             setInterval(function(){
                 $('.roadBoxCon').css('left',left-=5);
                  if(parseInt(left)<=-winWidth){

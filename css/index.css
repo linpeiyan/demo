@@ -3,8 +3,8 @@
     margin:0;
 }
 body{
-    background:#EFD72F;
     background:#C23433;
+    background:#EFD72F;
 }
 /*CSS3 开启GPU硬件加速*/
 -webkit-transform:translateZ(0);
@@ -14,21 +14,21 @@ body{
 transform:translateZ(0);
 .wrap{}
 .windmill{
-    width:100px;
-    height:215px;
+    width:50px;
+    /*height:160px;*/
     position:absolute;
-    bottom:230px;
-    left:330px;
+    bottom:290px;
+    left:380px;
 }
 .windmill .head{
     position:relative;
-    width:80px;
-    height:80px;
+    width:50px;
+    height:50px;
     background:url(../images/fengche.png) no-repeat;
-    background-size: 80px 80px;
-    -webkit-animation:show .5s linear 0s infinite;
-    -moz-animation:show .5s linear 0s infinite;
-    animation:show .5s linear 0s infinite;
+    background-size: 50px 50px;
+    -webkit-animation:showF .5s linear 0s infinite;
+    -moz-animation:showF .5s linear 0s infinite;
+    animation:showF .5s linear 0s infinite;
 }
 @-webkit-keyframes show{
     0%   {transform: rotateZ(0deg)}
@@ -38,15 +38,27 @@ transform:translateZ(0);
     0%   {transform: rotateZ(0deg)}
     100% {transform: rotateZ(360deg)}
 }
-@keyframes show{
+@keyframes showF{
     0%   {transform: rotateZ(0deg)}
     100% {transform: rotateZ(360deg)}
 }
+@-webkit-keyframes showF{
+    0%   {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(-360deg)}
+}
+@-moz-keyframes showF{
+    0%   {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(-360deg)}
+}
+@keyframes showF{
+    0%   {transform: rotateZ(0deg)}
+    100% {transform: rotateZ(-360deg)}
+}
 .windmill .footer{
     width:5px;
-    height:120px;
+    height:80px;
     border-radius:5px;
     background:#fff;
-    margin-left:35px;
+    margin-left:23px;
     margin-top:-35px;
 }
