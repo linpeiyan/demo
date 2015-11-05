@@ -26,6 +26,8 @@ transform:translateZ(0);
     height:80px;
     background:url(../images/fengche.png) no-repeat;
     background-size: 80px 80px;
+    -webkit-animation:show .5s linear 0s infinite;
+    -moz-animation:show .5s linear 0s infinite;
     animation:show .5s linear 0s infinite;
 }
 @-webkit-keyframes show{
