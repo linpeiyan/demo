@@ -37,10 +37,10 @@
     </style>
 </head>
 <body>
-<h1></h1>
-<h2></h2>
-<h3></h3>
-<h4></h4>
+<h1 hidden=""></h1>
+<h2 hidden></h2>
+<h3 hidden></h3>
+<h4 hidden></h4>
 <h5></h5>
 <script>
     window.onload=function(){
@@ -48,11 +48,11 @@
             return document.querySelectorAll(e);
         }
         var str='秋天到了,田野里,山坡上,到处是一片丰收的景色：棉花白的像雪,金灿灿,沉甸甸的谷穗频频点头；颗粒饱满的高粱红似火.果园里的苹果熟了,远远望去,一个个苹果像红灯笼,多好看呀!秋天的天空,像大海一样湛蓝,好像用秋雨洗刷过.朵朵白云犹如扬帆起的轻舟,慢悠悠的漂浮着,真是秋高气爽啊!秋天,虽不像百花盛开的春天那样有生气,也不像绿树成阴的夏天处处充满生机；却以诱人的秋色和金黄的果实吸引着人们.我爱看中秋夜晚那皎洁的明月；爱看公园里美丽的秋菊；爱看排着整齐队伍的大雁南去；更爱看谷粒堆满粮仓,沉甸甸的苹果缀满枝头。';
-        $('h1')[0].innerHTML=str;
-        $('h2')[0].innerHTML=str;
-        $('h3')[0].innerHTML=str;
-        $('h4')[0].innerHTML=str;
-        $('h5')[0].innerHTML=str;
+        $('h5')[0].innerHTML=str+'<br />'+str+'<br />'+str;
+        // $('h2')[0].innerHTML=str;
+        // $('h3')[0].innerHTML=str;
+        // $('h4')[0].innerHTML=str;
+        // $('h5')[0].innerHTML=str;
     }
 
 
