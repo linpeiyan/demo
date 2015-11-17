@@ -12,7 +12,7 @@ body{
 -ms-transform:translateZ(0);
 -o-transform:translateZ(0);
 transform:translateZ(0);
-.wrap{}
+.wrap{} 
 .windmill{
     width:50px;
     /*height:160px;*/
@@ -38,7 +38,7 @@ transform:translateZ(0);
     0%   {transform: rotateZ(0deg)}
     100% {transform: rotateZ(360deg)}
 }
-@keyframes showF{
+@keyframes show{
     0%   {transform: rotateZ(0deg)}
     100% {transform: rotateZ(360deg)}
 }
