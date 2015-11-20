@@ -1,184 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-    *{
-        padding:0;
-        margin:0;
-    }
-    body{background:#1E282D;}
-    li{list-style:none;}
-    .wrap{width:500px;height:300px;margin:50px auto; overflow:hidden; position:relative;border:6px solid #01ec8d;}
-    .bannerImg{width:2500px;height:300px;position:absolute;left:0;}
-    .bannerImg li{float:left;}
-    .bannerImg img{width:500px;height:300px;}
-    
-    .bannerBtn{
-        position:absolute;
-        bottom:10px;
-        left:50%;
-        margin-left:-30px;
-    }
-    .bannerBtn li{
-        display:inline-block;
-        width:20px;
-        height:20px;
-        background:#01ec8d;
-        cursor: pointer;
-        border-radius:50% ;
-        z-index: 2;
-    }
-    .bannerBtn li:hover,.bannerBtn li.active{background:#02e6d0;}
-    .nextPrep{position:absolute;width:100%;height:100%;}
-    .prep,.next{position:absolute;top:50%;margin-top:-25px;width:100px;background:#01ec8d;cursor:pointer;color:#fff;text-align:center;font:bold 16px/50px '幼圆';z-index: 4;}
-    .next{right:0;}
-    </style>
-</head>
-<body>
-    <div class="wrap">
-        <ul class="bannerImg">
-            <li class="p3"><img src="images/pic03.jpg"></li>
-            <li class="p1"><img src="images/pic01.jpg"></li>
-            <li class="p2"><img src="images/pic02.jpg"></li>
-            <li class="p3"><img src="images/pic03.jpg"></li>
-            <li class="p1"><img src="images/pic01.jpg"></li>
-        </ul>
-        <div class="nextPrep">
-            <div class="prep">Prep</div>
-            <div class="next">Next</div>
-        </div>
-        <ul class="bannerBtn">
-            <li class="active"></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-      $('.bannerImg')[0].style.left=-500+'px'; 
-        var s=-500,
-            n=0,
-            show,
-            on=true,
-            timeShow,
-            n_=10,
-            index_=0;
-
-        function bannerShow(v,j){
-            if(v=='prep'){
-                index_--;
-            }else if(v=='next'){
-                index_++;
-            }
-            if(index_>2){
-                index_=0;
-            }else if(index_<0){
-                index_=2;
-            }
-            $('.bannerBtn li').eq(index_).addClass('active').siblings().removeClass('active');
-            console.log(index_);
-            if(on){ //开关---判断动画是否走完，走完才允许执行下一个动作，避免动画叠加。
-                on=false;
-                var bannerLeft=parseInt($('.bannerImg').css('left'));
-                show=setInterval(function(){
-
-                    //如果点击上一张则+10向右走，点击下一张则-10向左走
-                    if(v=='prep'){
-                        s+=10;
-                    n+=10;
-                    }else if(v=='next'){
-                        s-=10;
-                    n+=10;
-                    }
-                    //判断是否为下一个/上一个调用的
-                    if(v=='prep' || v=='next'){
-                        $('.bannerImg')[0].style.left=s+'px';
-                        //每一张图为500px宽度，当走完一张图时即清除动画，避免一直执行动画。
-                        if(n>=500){
-                            n=0;
-                            on=true;
-                            clearInterval(show);
-                        }
-                        //如果走到最后一张图片时，立即把left值跳到第二张图片，最后一张跟第二张是一样的 （开头图）
-                        if($('.bannerImg').css('left')==-2000+'px'){
-                            s=-500;
-                            $('.bannerImg')[0].style.left=-500+'px';
-                        }
-                        //如果走到第一张图片时，立即把left值跳到倒数第二张图片，第一张跟倒数第二张是一样的（末尾图）
-                        if($('.bannerImg').css('left')==0+'px'){
-                            s=-1500;
-                            $('.bannerImg')[0].style.left=-1500+'px';
-
-                        }
-                    }
-
-                    //==================================圆点按钮事件================================================
-                    var indexLeft=parseInt($('.bannerImg').css('left'));
-                    //判断是否为圆点按钮调用，并且是否有传目标帧参数
-                    if(j && v=='lisBtn'){
-                      //判断是跳过两张及以上张数，如果是的话，跳转速度就应该加倍 --未完善-待续
-                       if((j-indexLeft)>=1000 || (j-indexLeft)<=-1000){
-                            n_=20;
-                        };
-                        //判断目标帧left值是否 大于 当前帧left值，如果大于则+10，也就向右走
-                        if(j>indexLeft){
-                            s+=n_;
-                        //目标帧left值 等于 当前帧left值 ，则停留原left值。
-                        }else if(j==indexLeft){
-                            s+=0;
-                        //判断目标帧left值是否 小于 当前帧left值，如果小于则-10，也就向左走
-                        }else if(j<indexLeft){
-                            s-=n_;
-                        }
-                        $('.bannerImg')[0].style.left=s+'px';
-                        //如果当前帧left值走到目标帧left值的位置 ，则清除计时器
-                        if(s== parseInt(j)){
-                            on=true;
-                            clearInterval(show);
-                        }
-                    }
-                },10)
-            }
-        }
-
-        //自动轮播的时候，每两秒调用一次bannerShow，每调用一次走一张图，也就是500px.
-        function zShow(){
-            timeShow=setInterval(function(){bannerShow('next')},2000);
-        }
-        zShow();
-        //鼠标移进banner时清除定时器，移出则继续执行定时器
-        $('.wrap').hover(function(){
-            clearInterval(timeShow);
-        },function(){
-            clearInterval(timeShow);
-            zShow();
-        })
-
-        // prep 上一张
-        $('.prep').on('click',function(){
-            bannerShow('prep');
-        })
-        
-        // next 下一张
-        $('.next').on('click',function(){
-            bannerShow('next');
-        })
-
-        // liBtn 圆点按钮
-        $('.bannerBtn li').on('click',function(){
-            var index=$(this).index('.bannerBtn li')+1;
-            var goLeft=index*500;
-            index_=index-1;
-            $(this).addClass('active').siblings().removeClass('active');
-           bannerShow('lisBtn',-goLeft);
-        })
-    </script>
-</body>
-</html>
-<!-- <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -187,6 +8,10 @@
     <style>
     ul,
     li { list-style: none; }
+    .nav{margin:20px 30px;}
+    .nav li{display:inline-block;}
+    .nav li a{display:block;padding:0px 20px;line-height:25px;color:#666;font-weight:bold;background:#fff;border-radius:10px;cursor:pointer;text-decoration:none;}
+    .nav a:hover{color:#C23433;}
     .bikeBox{height:300px;position:absolute;left:100px;bottom:10px;z-index: 2;}
     .bike { width: 500px; position: absolute; bottom: 30px; height: 270px; }
     .bike,.tyreBox,.tyre,.styre,.tyre li,.shelfBig,.gear,.gear .chain,.gear .pedalBox,.gear .pedal,.pipeAfter,.pipeBefore,.seat,.handlebar{position: absolute;}
@@ -247,6 +72,10 @@
 
 <body>
     <div class="wrap">
+        <ul class="nav">
+            <li><a href="slider-1.html" target="_blank">slider-1</a></li>
+            <li><a href="slider-2.html" target="_blank">slider-2</a></li>
+        </ul>
         <div class="windmill">
             <div class="head"></div>
             <div class="footer"></div>
@@ -341,4 +170,4 @@
         })
     </script>
 </body>
-</html> -->
+</html>
