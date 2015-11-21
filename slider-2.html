@@ -61,30 +61,7 @@
         timeShow,
         on=true;
         function show(){
-            timeShow=setInterval(function(){
-                $('.bannerImg li').attr('id','');
-                $('.bannerImg li').eq(n>2?0:n).attr('id','picActive-1');
-                $('.bannerImg li').eq((n+1)>2?0:n+1).attr('id','picActive-2');
-                n++;
-                if(n>2){
-                   n=0;
-                }
-                $('.bannerBtn li').eq(n).addClass('active').siblings().removeClass('active');
-                $('.bannerImg').css({'width':1000,'left':0}).animate({left:-500}, 500,function(){});
-            },2000);
-        }
-        //每2秒自动走一次
-       show();
-       // 鼠标移进则清除定时器，移出则继续
-        $('.wrap').hover(function(){
-            clearInterval(timeShow);
-        },function(){
-            show();
-        })
-
-        //上一张事件
-        $('.next').on('click',function(){
-             if(on){
+            if(on){
                 on=false;
                 $('.bannerImg li').attr('id','');
                 $('.bannerImg li').eq(n>2?0:n).attr('id','picActive-1');
@@ -94,11 +71,27 @@
                    n=0;
                 }
                 $('.bannerBtn li').eq(n).addClass('active').siblings().removeClass('active');
-                $('.bannerImg').css({'width':1000,'left':0}).animate({left:-500}, 500,function(){on=true});
+                $('.bannerImg').css({'width':1000,'left':0}).animate({left:-500}, 500,function(){on=true;});
             }
-        })
-
+        }
+        //================================================================
+        //每2秒自动走一次
+        //================================================================
+        function zShow(){
+            timeShow=setInterval(function(){
+                show();
+            },2000);
+        }
+        zShow();
+        //================================================================
         //下一张事件
+        //================================================================
+        $('.next').on('click',function(){
+            show();
+        })
+        //================================================================
+        //上一张事件
+        //================================================================
          $('.prep').on('click',function(){
             if(on){
                 on=false;
@@ -113,8 +106,9 @@
                 $('.bannerImg').css({'width':1000,left:-500}).animate({left:0}, 500,function(){on=true;})
             }
         })
-
+         //================================================================
          //圆点按钮事件
+         //================================================================
          $('.bannerBtn li').on('click',function(){
             var index=$(this).index('.bannerBtn li');
              if(index>n && on){
@@ -134,7 +128,14 @@
             }
                 $('.bannerBtn li').eq(n).addClass('active').siblings().removeClass('active');
          })
-
+        //================================================================
+        // 鼠标移进则清除定时器，移出则继续
+        //================================================================
+        $('.wrap').hover(function(){
+            clearInterval(timeShow);
+        },function(){
+            zShow();
+        })
     </script>
 </body>
 </html>

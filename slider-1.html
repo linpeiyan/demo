@@ -79,7 +79,6 @@
                 index_=2;
             }
             $('.bannerBtn li').eq(index_).addClass('active').siblings().removeClass('active');
-            console.log(index_);
             if(on){ //开关---判断动画是否走完，走完才允许执行下一个动作，避免动画叠加。
                 on=false;
                 var bannerLeft=parseInt($('.bannerImg').css('left'));
@@ -115,7 +114,7 @@
                         }
                     }
 
-                    //==================================圆点按钮事件================================================
+                    //==================================圆点按钮逻辑================================================
                     var indexLeft=parseInt($('.bannerImg').css('left'));
                     //判断是否为圆点按钮调用，并且是否有传目标帧参数
                     if(j && v=='lisBtn'){
@@ -126,12 +125,12 @@
                         //判断目标帧left值是否 大于 当前帧left值，如果大于则+10，也就向右走
                         if(j>indexLeft){
                             s+=n_;
-                        //目标帧left值 等于 当前帧left值 ，则停留原left值。
-                        }else if(j==indexLeft){
-                            s+=0;
                         //判断目标帧left值是否 小于 当前帧left值，如果小于则-10，也就向左走
                         }else if(j<indexLeft){
                             s-=n_;
+                        //目标帧left值 等于 当前帧left值 ，则停留原left值。
+                        }else if(j==indexLeft){
+                            s+=0;
                         }
                         $('.bannerImg')[0].style.left=s+'px';
                         //如果当前帧left值走到目标帧left值的位置 ，则清除计时器
