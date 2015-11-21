@@ -4,6 +4,7 @@
 }
 body{
     background:#C23433;
+    background:#67DDAB;
     background:#EFD72F;
 }
 /*CSS3 开启GPU硬件加速*/
@@ -17,7 +18,7 @@ transform:translateZ(0);
     width:50px;
     /*height:160px;*/
     position:absolute;
-    bottom:290px;
+    bottom:310px;
     left:380px;
 }
 .windmill .head{

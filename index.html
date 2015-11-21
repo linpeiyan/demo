@@ -8,6 +8,7 @@
     <style>
     ul,
     li { list-style: none; }
+    .wrap{position: relative;height:100%;overflow: hidden;}
     .nav{position:absolute;top:20px;left:30px;}
     .nav li{display:inline-block;}
     .nav li a{display:block;padding:0px 20px;line-height:25px;color:#666;font-weight:bold;background:#fff;border-radius:10px;cursor:pointer;text-decoration:none;}
@@ -40,9 +41,11 @@
     .gear .pedal { width: 20px; height: 4px; right: -10px; top: -1px; transform: rotate(-20deg); }
     .gear .pedalAfter { left: -10px; }
     .pipeAfter { width: 8px; height: 165px; top: 38px; left: 200px; border-radius: 4px; transform: rotate(-20deg); }
-    .pipeBefore { width: 8px; height: 194px; top: 10px; left: 370px; border-radius: 4px; transform: rotate(-20deg); }
-    .seat { width: 70px; height: 10px; border-radius: 10px; top: 40px; left: 125px; }
-    .handlebar { width: 100px; height: 10px; border-radius: 10px; top: 10px; left: 290px; }
+    .pipeBefore { width: 8px; height: 204px; top: -5px; left: 365px; border-radius: 4px; transform: rotate(-20deg); }
+    /*座椅*/
+    .seat { width: 70px; height: 10px; border-radius: 10px; top: 40px; left: 135px; transform: rotate(4deg); }
+    /*车把*/
+    .handlebar { width: 100px; height: 10px; border-radius: 10px; top: -5px; left: 290px; }
     .roadBox{width:100%;overflow:hidden;position:absolute;bottom:0;}
     .roadBoxCon{height:124px;position:relative;}
     .roadBox ul{overflow:hidden;background:#B4B2B2;float:left;}
@@ -67,19 +70,35 @@
             height:4px;
             background:#F2E350;
     }
+    /*云*/
+    .cloud{
+        width:100%;
+        height:500px;
+        background:url(images/bh4Si0q.png) center no-repeat;
+        background-size: contain;
+        position:absolute;
+        top:-150px;
+        transition: all linear;
+        transform: translate3d(100%, 0, 0);
+    }
     </style>
 </head>
 
 <body>
-    <ul class="nav">
-           <li><a href="slider-1.html" target="_blank">slider-1</a></li>
-           <li><a href="slider-2.html" target="_blank">slider-2</a></li>
-    </ul>
     <div class="wrap">
+        <!-- 导航 -->
+        <ul class="nav" hidden>
+               <li><a href="slider-1.html" target="_blank">slider-1</a></li>
+               <li><a href="slider-2.html" target="_blank">slider-2</a></li>
+        </ul>
+        <!-- 云 -->
+        <div class="cloud"></div>
+        <!-- 风车 -->
         <div class="windmill">
             <div class="head"></div>
             <div class="footer"></div>
         </div>
+        <!-- 自行车 -->
         <div class="bikeBox">
             <div class="bike">
             <div class="shelf">
@@ -136,7 +155,8 @@
             </div>
             </div>
         </div>
-        
+
+        <!-- 公路 -->
         <div class="roadBox">
             <div class="roadBoxCon">
                 <ul class="ulBefore">
@@ -156,7 +176,20 @@
     <script>
         $(function(){
             var winWidth=$(window).width(),
+
+                winHeight=$(window).height(),
                 left=0;
+            //===============================================================================
+            // 父容器自适应高度
+            //===============================================================================
+            $('.wrap').css('height',winHeight);
+            $(window).resize(function(){
+                winHeight=$(window).height();
+                $('.wrap').css('height',winHeight);
+            })
+            //===============================================================================
+            // 公路动画
+            //===============================================================================
             $('.roadBoxCon ul').css('width',winWidth);
             $('.roadBoxCon').css('width',$('.roadBox ul').length*winWidth);
             setInterval(function(){
@@ -167,6 +200,30 @@
                     left=0;
                  }
             },10);
+
+
+            //===============================================================================
+            //云-不定时出现
+            //===============================================================================
+            show();
+            function show(){
+                var s=parseInt(Math.floor(Math.random()*10));
+                console.log(s);
+                console.log(s*1000);
+                if(s==0){
+                    // s=parseInt(Math.floor(Math.random()*10));
+                }else{
+                    setTimeout(function(){
+                        $('.cloud').css({'transitionDuration':10+'s','transform':'translate3d(-100%, 0, 0)'});
+                        setTimeout(function(){
+                            $('.cloud').css({'transitionDuration':'0s','transform':'translate3d(100%, 0, 0)'});
+                        },10000)
+                    },3000)
+                }
+            }
+            setInterval(function(){
+                // show();
+            },20000)
         })
     </script>
 </body>
